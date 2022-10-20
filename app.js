@@ -1,6 +1,7 @@
 const add = require('./add')
 const read = require('./read')
 const write = require('./write')
+const update = require('./update')
 const present = require('./present')
 const del = require('./del')
 
@@ -25,6 +26,18 @@ if (data[2] == 'read') {
     //impport present
     const present = require('./present')
     present(read())
+
+}
+if (data[2] == 'update') {
+const note = {
+    id: data[3],
+    title: data[4],
+    body: data[5]
+}
+const oldNote = read()
+
+update(note, oldNote)
+console.log(update)
 }
 if (data[2] == 'delete') {
     //Get oldNote values
@@ -34,7 +47,7 @@ if (data[2] == 'delete') {
     const id = data[3]
 
     del(id, oldNote)
-    present(read())
+    console.log(read())
 }
 
 
